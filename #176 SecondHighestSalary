@@ -1,0 +1,7 @@
+/* Write your T-SQL query statement below */
+SELECT Max( salary ) AS SecondHighestSalary 
+FROM Employee 
+WHERE salary < (SELECT Max(salary) FROM Employee) 
+/* SELECT MAX(Salary) FROM Employee is the is the Highest ,
+so the salary < highest salary is the second highest */
+/* Also you cannot use SELECT TOP 1 because it will not return null)
