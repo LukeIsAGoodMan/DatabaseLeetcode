@@ -1,0 +1,23 @@
+class Solution {
+    public int reverse(int x) {
+        if(x<0){
+            return (-1) * is(-x);
+        }
+        return is(x);
+    }
+    public int is(int x){
+        int ret=0;
+        int temp;
+        int prev=0;
+        while(x!=0){
+            temp=x%10;
+            ret=ret*10+temp;
+            if((ret-temp)/10!=prev){
+                return 0;
+            }
+            prev=ret;
+            x=x/10;
+        }
+        return ret;
+    }
+}
