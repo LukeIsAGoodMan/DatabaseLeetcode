@@ -1,0 +1,32 @@
+class Solution {
+    public int myAtoi(String s) {
+        long ret=0;
+        long pos=1;
+        char [] sa= s.toCharArray();
+        int i=0;
+        while(i<s.length()&&sa[i]==' '){
+            i++;
+        }
+        if(i<s.length()&&sa[i]=='-'){
+            pos=-1;
+            i++;
+        }
+        else if(i<s.length()&&sa[i]=='+'){
+            pos=1;
+            i++;
+        }
+        while(i<s.length()&&Character.isDigit(sa[i])){
+            ret=ret*10+Character.getNumericValue(sa[i]);
+            if(pos==1&&ret>Integer.MAX_VALUE){
+                return Integer.MAX_VALUE ;
+            }
+            if(pos==-1&&(-1)*ret<Integer.MIN_VALUE){
+                //double retu= Math.pow(2,31)*(-1);
+                return Integer.MIN_VALUE;
+            }
+            i++;
+        }
+        int intret=(int)(pos * ret);
+        return intret;
+    }
+}
