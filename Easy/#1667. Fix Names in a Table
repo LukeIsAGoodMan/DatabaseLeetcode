@@ -1,0 +1,6 @@
+select user_id
+    , concat(
+        upper(substring(name,1,1)), lower(substring(name,2,len(name)))
+    ) name
+from Users
+Order BY user_id
